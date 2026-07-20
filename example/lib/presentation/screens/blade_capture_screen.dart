@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:ultralytics_yolo/ultralytics_yolo.dart';
 import 'package:ultralytics_yolo_example/presentation/models/drill_task.dart';
 
-
 /// 拍照采集屏幕 — 使用 YOLOView 实时检测，拍照时同步截取当前帧的检测结果。
 ///
 /// 实时检测的 [YOLOResult] 通过 [YOLOView.onResult] 持续回调，
@@ -183,7 +182,10 @@ class _BladeCaptureScreenState extends State<BladeCaptureScreen> {
               ),
               const Spacer(),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 4,
+                ),
                 decoration: BoxDecoration(
                   color: Colors.blue,
                   borderRadius: BorderRadius.circular(20),
@@ -235,10 +237,7 @@ class _BladeCaptureScreenState extends State<BladeCaptureScreen> {
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [
-                Colors.transparent,
-                Colors.black.withValues(alpha: 0.8),
-              ],
+              colors: [Colors.transparent, Colors.black.withValues(alpha: 0.8)],
             ),
           ),
           padding: const EdgeInsets.fromLTRB(16, 24, 16, 12),
