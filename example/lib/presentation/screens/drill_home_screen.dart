@@ -47,8 +47,8 @@ class _DrillHomeScreenState extends State<DrillHomeScreen> {
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : _tasks.isEmpty
-              ? _buildEmptyState(context)
-              : _buildTaskList(context),
+          ? _buildEmptyState(context)
+          : _buildTaskList(context),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _createTask,
         icon: const Icon(Icons.add),
@@ -67,9 +67,9 @@ class _DrillHomeScreenState extends State<DrillHomeScreen> {
           Icon(
             Icons.precision_manufacturing_outlined,
             size: 80,
-            color: Theme.of(context).colorScheme.onSurfaceVariant.withValues(
-              alpha: 0.4,
-            ),
+            color: Theme.of(
+              context,
+            ).colorScheme.onSurfaceVariant.withValues(alpha: 0.4),
           ),
           const SizedBox(height: 16),
           Text(
@@ -128,9 +128,9 @@ class _DrillHomeScreenState extends State<DrillHomeScreen> {
   }
 
   void _showTaskDetail(BuildContext context, DrillTask task) async {
-    await Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => TaskDetailScreen(task: task)),
-    );
+    await Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (_) => TaskDetailScreen(task: task)));
     // 返回后保存并刷新 UI（刀齿选择可能已变更）
     if (mounted) {
       _persist();
@@ -208,4 +208,3 @@ class _TaskCard extends StatelessWidget {
     );
   }
 }
-
