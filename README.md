@@ -24,23 +24,23 @@
 
 ### Detect（目标检测）- 全部 5 尺寸
 
-| 模型 | 大小 | 说明 |
-|------|------|------|
-| yolo26n_int8.tflite | 2.7 MB | 最快 |
-| yolo26s_int8.tflite | 9.6 MB | 平衡 |
-| yolo26m_int8.tflite | 20.1 MB | 中等 |
-| yolo26l_int8.tflite | 24.5 MB | 高精度 |
+| 模型                | 大小    | 说明     |
+| ------------------- | ------- | -------- |
+| yolo26n_int8.tflite | 2.7 MB  | 最快     |
+| yolo26s_int8.tflite | 9.6 MB  | 平衡     |
+| yolo26m_int8.tflite | 20.1 MB | 中等     |
+| yolo26l_int8.tflite | 24.5 MB | 高精度   |
 | yolo26x_int8.tflite | 54.2 MB | 最高精度 |
 
 ### 其他任务 - n 和 s 尺寸
 
-| 任务 | n 尺寸 | s 尺寸 |
-|------|--------|--------|
-| Segment | yolo26n-seg_int8.tflite (3.0 MB) | yolo26s-seg_int8.tflite (10.5 MB) |
-| Semantic | yolo26n-sem_int8.tflite (1.6 MB) | yolo26s-sem_int8.tflite (6.1 MB) |
-| Classify | yolo26n-cls_int8.tflite (2.8 MB) | yolo26s-cls_int8.tflite (6.6 MB) |
-| Pose | yolo26n-pose_int8.tflite (3.4 MB) | yolo26s-pose_int8.tflite (10.6 MB) |
-| OBB | yolo26n-obb_int8.tflite (2.8 MB) | yolo26s-obb_int8.tflite (9.9 MB) |
+| 任务     | n 尺寸                            | s 尺寸                             |
+| -------- | --------------------------------- | ---------------------------------- |
+| Segment  | yolo26n-seg_int8.tflite (3.0 MB)  | yolo26s-seg_int8.tflite (10.5 MB)  |
+| Semantic | yolo26n-sem_int8.tflite (1.6 MB)  | yolo26s-sem_int8.tflite (6.1 MB)   |
+| Classify | yolo26n-cls_int8.tflite (2.8 MB)  | yolo26s-cls_int8.tflite (6.6 MB)   |
+| Pose     | yolo26n-pose_int8.tflite (3.4 MB) | yolo26s-pose_int8.tflite (10.6 MB) |
+| OBB      | yolo26n-obb_int8.tflite (2.8 MB)  | yolo26s-obb_int8.tflite (9.9 MB)   |
 
 ## 技术栈
 

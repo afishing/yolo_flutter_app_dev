@@ -72,11 +72,13 @@ class TaskStorage {
         'bladeNumber': blade.bladeNumber,
         'photos': photosJson,
         'selectedTeeth': blade.selectedTeeth
-            .map((t) => {
-                  'toothNumber': t.toothNumber,
-                  'photoIndex': t.photoIndex,
-                  'detectionIndex': t.detectionIndex,
-                })
+            .map(
+              (t) => {
+                'toothNumber': t.toothNumber,
+                'photoIndex': t.photoIndex,
+                'detectionIndex': t.detectionIndex,
+              },
+            )
             .toList(),
       });
     }
@@ -163,11 +165,13 @@ class TaskStorage {
           );
         }).toList();
 
-        blades.add(BladeData(
-          bladeNumber: bladeNumber,
-          photos: photos,
-          selectedTeeth: teeth,
-        ));
+        blades.add(
+          BladeData(
+            bladeNumber: bladeNumber,
+            photos: photos,
+            selectedTeeth: teeth,
+          ),
+        );
       }
 
       return DrillTask(
