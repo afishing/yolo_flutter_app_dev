@@ -20,9 +20,7 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
   Widget build(BuildContext context) {
     final task = widget.task;
     return Scaffold(
-      appBar: AppBar(
-        title: Text('钻头 ${task.drillBitNumber}'),
-      ),
+      appBar: AppBar(title: Text('钻头 ${task.drillBitNumber}')),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
@@ -53,11 +51,17 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
                           spacing: 8,
                           children: [
                             _InfoChip(
-                                icon: Icons.layers, label: '${task.bladeCount} 刀翼'),
+                              icon: Icons.layers,
+                              label: '${task.bladeCount} 刀翼',
+                            ),
                             _InfoChip(
-                                icon: Icons.photo_camera, label: '$_totalPhotos 张照片'),
+                              icon: Icons.photo_camera,
+                              label: '$_totalPhotos 张照片',
+                            ),
                             _InfoChip(
-                                icon: Icons.settings, label: '${task.totalTeethCount} 刀齿'),
+                              icon: Icons.settings,
+                              label: '${task.totalTeethCount} 刀齿',
+                            ),
                           ],
                         ),
                       ],
@@ -74,12 +78,14 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
           const SizedBox(height: 8),
 
           // 各刀翼卡片
-          ...task.blades.map((blade) => _BladeCard(
-                blade: blade,
-                onTap: blade.photos.isEmpty
-                    ? null
-                    : () => _enterToothSelection(blade.bladeNumber - 1),
-              )),
+          ...task.blades.map(
+            (blade) => _BladeCard(
+              blade: blade,
+              onTap: blade.photos.isEmpty
+                  ? null
+                  : () => _enterToothSelection(blade.bladeNumber - 1),
+            ),
+          ),
         ],
       ),
     );
@@ -91,10 +97,8 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
   void _enterToothSelection(int bladeIndex) async {
     await Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (_) => ToothSelectionScreen(
-          task: widget.task,
-          bladeIndex: bladeIndex,
-        ),
+        builder: (_) =>
+            ToothSelectionScreen(task: widget.task, bladeIndex: bladeIndex),
       ),
     );
     // 返回后刷新 UI（刀齿选择可能已变更）
@@ -157,17 +161,21 @@ class _BladeCard extends StatelessWidget {
                         spacing: 6,
                         children: [
                           _MiniChip(
-                              icon: Icons.photo, label: '${blade.photos.length} 张'),
+                            icon: Icons.photo,
+                            label: '${blade.photos.length} 张',
+                          ),
                           _MiniChip(
-                              icon: Icons.settings, label: '$teethCount 齿'),
+                            icon: Icons.settings,
+                            label: '$teethCount 齿',
+                          ),
                         ],
                       )
                     else
                       Text(
                         '未拍照',
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: Theme.of(context).colorScheme.onSurfaceVariant,
-                            ),
+                          color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        ),
                       ),
                   ],
                 ),
@@ -219,13 +227,17 @@ class _MiniChip extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(icon, size: 14, color: Theme.of(context).colorScheme.onSurfaceVariant),
+        Icon(
+          icon,
+          size: 14,
+          color: Theme.of(context).colorScheme.onSurfaceVariant,
+        ),
         const SizedBox(width: 4),
         Text(
           label,
           style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: Theme.of(context).colorScheme.onSurfaceVariant,
-              ),
+            color: Theme.of(context).colorScheme.onSurfaceVariant,
+          ),
         ),
       ],
     );
