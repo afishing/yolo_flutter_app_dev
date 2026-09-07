@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:ultralytics_yolo/ultralytics_yolo.dart';
 import 'package:ultralytics_yolo_example/presentation/models/drill_task.dart';
 
-
 /// 刀齿选择屏幕 — 在已拍照片上点选检测框，分配刀齿编号。
 ///
 /// 检测框来自拍照时实时监测截取的 [YOLOResult.normalizedBox]（0-1 归一化坐标），
@@ -51,9 +50,7 @@ class _ToothSelectionScreenState extends State<ToothSelectionScreen> {
   Future<void> _decodeImages() async {
     for (var i = 0; i < _photos.length; i++) {
       try {
-        final codec = await ui.instantiateImageCodec(
-          _photos[i].imageBytes,
-        );
+        final codec = await ui.instantiateImageCodec(_photos[i].imageBytes);
         final frame = await codec.getNextFrame();
         if (mounted) {
           setState(() {
@@ -134,7 +131,9 @@ class _ToothSelectionScreenState extends State<ToothSelectionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('刀齿选择 — 刀翼 ${_blade.bladeNumber}/${widget.task.bladeCount}'),
+        title: Text(
+          '刀齿选择 — 刀翼 ${_blade.bladeNumber}/${widget.task.bladeCount}',
+        ),
         actions: [
           if (_selectedTeeth.isNotEmpty)
             TextButton.icon(
@@ -168,8 +167,10 @@ class _ToothSelectionScreenState extends State<ToothSelectionScreen> {
         children: [
           Icon(Icons.precision_manufacturing, size: 20),
           const SizedBox(width: 8),
-          Text('钻头 ${widget.task.drillBitNumber}',
-              style: Theme.of(context).textTheme.titleMedium),
+          Text(
+            '钻头 ${widget.task.drillBitNumber}',
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
           const Spacer(),
           if (_selectedTeeth.isNotEmpty)
             Chip(
@@ -180,7 +181,9 @@ class _ToothSelectionScreenState extends State<ToothSelectionScreen> {
           Chip(
             label: Text(
               '下一编号: #$_nextToothNumber',
-              style: TextStyle(color: Theme.of(context).colorScheme.onSecondaryContainer),
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onSecondaryContainer,
+              ),
             ),
             visualDensity: VisualDensity.compact,
             backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
@@ -201,12 +204,7 @@ class _ToothSelectionScreenState extends State<ToothSelectionScreen> {
 
     // 如果还没有解码出图片尺寸，先显示图片
     if (imgSize == null) {
-      return Center(
-        child: Image.memory(
-          photo.imageBytes,
-          fit: BoxFit.contain,
-        ),
-      );
+      return Center(child: Image.memory(photo.imageBytes, fit: BoxFit.contain));
     }
 
     final aspectRatio = imgSize.width / imgSize.height;
@@ -224,10 +222,7 @@ class _ToothSelectionScreenState extends State<ToothSelectionScreen> {
                 fit: StackFit.expand,
                 children: [
                   // 底图
-                  Image.memory(
-                    photo.imageBytes,
-                    fit: BoxFit.fill,
-                  ),
+                  Image.memory(photo.imageBytes, fit: BoxFit.fill),
                   // 检测框
                   for (int i = 0; i < detections.length; i++)
                     _buildDetectionBox(
@@ -283,8 +278,10 @@ class _ToothSelectionScreenState extends State<ToothSelectionScreen> {
           child: isSelected
               ? Center(
                   child: Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 2,
+                    ),
                     decoration: BoxDecoration(
                       color: Colors.green,
                       borderRadius: BorderRadius.circular(12),

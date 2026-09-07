@@ -35,10 +35,7 @@ class CapturedPhoto {
   /// 拍照瞬间的实时检测结果列表（归一化坐标在 normalizedBox 中）。
   List<YOLOResult> detections;
 
-  CapturedPhoto({
-    required this.imageBytes,
-    this.detections = const [],
-  });
+  CapturedPhoto({required this.imageBytes, this.detections = const []});
 }
 
 /// 单个刀翼的采集与选择数据。
@@ -56,8 +53,8 @@ class BladeData {
     required this.bladeNumber,
     List<CapturedPhoto>? photos,
     List<SelectedTooth>? selectedTeeth,
-  })  : photos = photos ?? [],
-        selectedTeeth = selectedTeeth ?? [];
+  }) : photos = photos ?? [],
+       selectedTeeth = selectedTeeth ?? [];
 }
 
 /// 一个完整的钻头检测任务。
@@ -83,12 +80,10 @@ class DrillTask {
     required this.bladeCount,
     List<BladeData>? blades,
     DateTime? createdAt,
-  })  : blades = blades ??
-            List.generate(
-              bladeCount,
-              (i) => BladeData(bladeNumber: i + 1),
-            ),
-        createdAt = createdAt ?? DateTime.now();
+  }) : blades =
+           blades ??
+           List.generate(bladeCount, (i) => BladeData(bladeNumber: i + 1)),
+       createdAt = createdAt ?? DateTime.now();
 
   /// 已完成采集的刀翼数量。
   int get completedBladeCount =>
